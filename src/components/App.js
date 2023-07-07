@@ -16,7 +16,7 @@ const Comp = (props) => {
           showModal && (
           <div className="modal">
               <h3>Modal Content</h3>
-              <p>This is a model Content</p>
+              <p>This is the modal content.</p>
           </div>
           )}
       </div>
