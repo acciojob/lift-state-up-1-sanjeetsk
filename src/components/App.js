@@ -3,31 +3,36 @@ import React,{useState} from "react";
 import './../styles/App.css';
 
 
-const Comp = (props) => {
-
-  const [showModal, setShowModal] = useState(false);
-
-  return <div className="parent">
-      <h1>{props.name}</h1>
-      <div className="child">
-          <h2>{props.child}</h2>
-          <button onClick={()=>setShowModal(true)}>{props.btn}</button>
-          {
-          showModal && (
-          <div className="modal">
-              <h3>Modal Content</h3>
-              <p>This is the modal content.</p>
-          </div>
-          )}
-      </div>
-
-  </div>
+const Child = ({showModel, handleButton}) => {
+  
+  return(
+    <div className="child">
+      <h2>Child Component</h2>
+      <button onClick={handleButton}>Show Modal</button>
+      {
+        showModel && <>
+          <h3>Modal Content</h3>
+          <p>This is modal content</p>
+        </>
+      } 
+    </div>
+  )
 }
 
 const App = () => {
+
+  const [showModel, setShowModel] = useState(false);
+
+  function handleClick(){
+    setShowModel(true);
+  }
+
   return (
     <div id="main">
-        <Comp name="Parent Component" child="Child Componenet" btn="Show Modal"></Comp>
+        <div className="parent">
+          <h1>Parent Component</h1>
+          <Child showModel={showModel} handleButton={handleClick} />
+        </div>
     </div>
   )
 }
